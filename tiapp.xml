@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <property name="acs-oauth-secret-production" type="string">WRlyOGplVsovGn1NhzMYVpUfXDSWPEgb</property>
+    <property name="acs-oauth-key-production" type="string">iT1VKWBG64akawN51evQFmbsLAwLEKP3</property>
+    <property name="acs-api-key-production" type="string">fxqnmGdfWYdRxCTnbI42QvPAhvBwmYrK</property>
+    <property name="acs-oauth-secret-development" type="string">XD81Mv0N7Fb5EjYpPD5vVZnlxn4VJVEW</property>
+    <property name="acs-oauth-key-development" type="string">FNW0sEAx7L0l7Ub4nTfYi4n2oBfxrYwv</property>
+    <property name="acs-api-key-development" type="string">C9uvkrOLz0jp4tXFR1ROLWPUQQrXsLMI</property>
+    <id>com.appcelerator.naviapp.namle</id>
+    <name>Perspective</name>
+    <version>1.0</version>
+    <publisher>nle</publisher>
+    <url>http://</url>
+    <description>not specified</description>
+    <copyright>2012 by nle</copyright>
+    <icon>perspective.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>8990fb30-8002-4a00-9b5f-e9775c7b1769</guid>
+    <property name="ti.ui.defaultunit" type="string">system</property>
+    <iphone>
+        <orientations device="iphone">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+        </orientations>
+        <orientations device="ipad">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
+        </orientations>
+    </iphone>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs" version="2.2.0">ti.cloud</module>
+        <module platform="commonjs" version="1.0.2">ti.navibridge</module>
+    </modules>
+    <deployment-targets>
+        <target device="ipad">true</target>
+        <target device="blackberry">false</target>
+        <target device="android">false</target>
+        <target device="iphone">true</target>
+        <target device="mobileweb">true</target>
+    </deployment-targets>
+    <sdk-version>2.1.3.GA</sdk-version>
+</ti:app>
