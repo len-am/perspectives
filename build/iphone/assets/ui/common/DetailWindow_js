@@ -3,26 +3,26 @@ var DetailWindow = function(_perspective, containingWindow) {
 	var db = require('lib/db');
 	var NAVIBRIDGE = require('ti.navibridge');
 	var applicationWindow = require('ui/handheld/ApplicationWindow');
-	
+
 	var win = Ti.UI.createWindow({
 		title : "Perspective",
 		barColor : '#556b2f',
 		backgroundColor : 'transparent',
 		backgroundImage : 'images/grain.png'
 	});
-	
+
 	var mainView = Ti.UI.createView({
 		top : 0,
-		width: Ti.UI.SIZE
+		width : Ti.UI.SIZE
 	});
-	
+
 	win.add(mainView);
-	
+
 	var imgView = Ti.UI.createImageView({
-		top: 10,
+		top : 10,
 		image : _perspective.url,
-		height: 300,
-		width: Ti.UI.SIZE
+		height : 300,
+		width : Ti.UI.SIZE
 	});
 	mainView.add(imgView);
 
@@ -47,17 +47,34 @@ var DetailWindow = function(_perspective, containingWindow) {
 			modal : true
 		});
 
-		//Send to navibridge
-		NAVIBRIDGE.addPOI({
-			lat : _perspective.locLat,
-			lon : _perspective.locLong
-		});
-		
 		var dialog = Ti.UI.createAlertDialog({
-					message : 'The target has been sent to Navibridge. Enjoy your new perspective.',
-					ok : 'Okay',
-					title : 'View'
-				}).show();
+			cancel : 2,
+			buttonNames : ['Install', 'Set POI', 'Cancel'],
+			message : 'Navibridge must be installed prior to setting the perspective as the POI',
+			title : 'Navibridge'
+		});
+		dialog.addEventListener('click', function(e) {
+			if (e.index === e.source.cancel) {
+				Ti.API.info('The cancel button was clicked');
+			}
+
+			switch(e.index) {
+				case 0:
+					NAVIBRIDGE.installNavi();
+					break;
+				case 1:
+					NAVIBRIDGE.addPOI({
+						lat : _perspective.locLat,
+						lon : _perspective.locLong
+					});
+					break;
+				case 2:
+					return;
+			}
+
+			acs.update(_perspective);
+		});
+		dialog.show();
 	});
 	actions.add(goButton);
 
@@ -136,12 +153,11 @@ var DetailWindow = function(_perspective, containingWindow) {
 
 	actions.add(voteButton);
 
-	win.update = function()
-	{
+	win.update = function() {
 		_perspective = db.queryPerspective(_perspective.id);
-		imgView.image = _perspective.url;	
+		imgView.image = _perspective.url;
 	}
-	
+
 	return win;
 };
 

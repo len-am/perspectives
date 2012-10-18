@@ -2,7 +2,7 @@ var MapWindow = function(_perspective) {
 	
 	var win = Ti.UI.createWindow({
 		title:"Examine the Perspective",
-		barColor: '#6d0a0c',
+		barColor: '#556b2f',
 		backgroundColor:'#fff'
 	});
 	
