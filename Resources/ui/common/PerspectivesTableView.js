@@ -50,12 +50,21 @@ var PerspectiveEntry = function(_self, _perspective) {
 	});
 	var containerView = Ti.UI.createView({
 		backgroundColor: "white",
-		top: 10,
+		top: 6,
 		height : 110,
 		width: 160
 	});
 	
+	var innerContainerView = Ti.UI.createView({
+		backgroundColor: "black",
+		top: 5,
+		height : 100,
+		width: 150
+	});
+	
+	
 	entry.add(containerView);
+	containerView.add(innerContainerView);
 	
 	var view = Titanium.UI.createImageView({
 		image : _perspective.url,
@@ -71,7 +80,7 @@ var PerspectiveEntry = function(_self, _perspective) {
 		});
 	}
 	
-	containerView.add(view);
+	innerContainerView.add(view);
 
 	var ratings = Titanium.UI.createView({
 		height : 20,
